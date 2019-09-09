@@ -1,0 +1,40 @@
+[submodule "skalibs/skalibs"]
+	path = skalibs/skalibs
+	url = git@github.com:s6-debs/skalibs
+	branch = stretch
+[submodule "execline/execline"]
+	path = execline/execline
+	url = git@github.com:s6-debs/execline
+	branch = stretch
+[submodule "s6/s6"]
+	path = s6/s6
+	url = git@github.com:s6-debs/s6
+	branch = stretch
+[submodule "s6-rc/s6-rc"]
+	path = s6-rc/s6-rc
+	url = git@github.com:s6-debs/s6-rc
+	branch = stretch
+[submodule "s6-dns/s6-dns"]
+	path = s6-dns/s6-dns
+	url = git@github.com:s6-debs/s6-dns
+	branch = stretch
+[submodule "bearssl/bearssl"]
+	path = bearssl/bearssl
+	url = git@github.com:s6-debs/bearssl
+	branch = stretch
+[submodule "s6-networking/s6-networking"]
+	path = s6-networking/s6-networking
+	url = git@github.com:s6-debs/s6-networking
+	branch = stretch
+[submodule "s6-portable-utils/s6-portable-utils"]
+	path = s6-portable-utils/s6-portable-utils
+	url = git@github.com:s6-debs/s6-portable-utils
+	branch = stretch
+[submodule "s6-linux-utils/s6-linux-utils"]
+	path = s6-linux-utils/s6-linux-utils
+	url = git@github.com:s6-debs/s6-linux-utils
+	branch = stretch
+[submodule "s6-linux-init/s6-linux-init"]
+	path = s6-linux-init/s6-linux-init
+	url = git@github.com:s6-debs/s6-linux-init
+	branch = stretch

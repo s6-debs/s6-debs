@@ -1,0 +1,33 @@
+include ../config.mk
+
+TUPLE = $(PACKAGE)_$(VERSION)
+TGZFILE = $(TUPLE).orig.tar.gz
+
+SBUILD_OPTS ?=
+GITTAG ?= v$(VERSION)
+
+ifdef REMOTEREPO
+SBUILD_OPTS += --extra-repository $(REMOTEREPO)
+
+ifdef REMOTEREPOKEY
+SBUILD_OPTS += --extra-repository-key $(REMOTEREPOKEY)
+endif
+
+else
+SBUILD_OPTS += --extra-package ../$(OUTDIR)
+endif
+
+build: origtgz compile
+
+origtgz: $(TGZFILE)
+
+$(TGZFILE):
+	git -C $(PACKAGE) archive --prefix=$(PACKAGE)/ -o ../$@ $(GITTAG)
+
+compile:
+	sbuild -d $(DIST) -b --build-dir ../$(OUTDIR) $(SBUILD_OPTS) $(PACKAGE)
+
+clean:
+	rm -f $(TGZFILE)
+	rm -f $(TUPLE)-*.dsc
+	rm -f $(TUPLE)-*.debian.tar.xz

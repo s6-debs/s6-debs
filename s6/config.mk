@@ -1,0 +1,2 @@
+PACKAGE = s6
+VERSION = 2.8.0.1
