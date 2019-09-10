@@ -20,6 +20,7 @@ Clone this git repository, and initialise submodules:
 $ git clone https://github.com/s6-debs/s6-debs
 $ cd s6-debs
 $ git submodule init
+$ git submodule update
 ```
 
 The Makefiles in this repository use the `sbuild(1)` tool to build packages
