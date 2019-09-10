@@ -1,7 +1,12 @@
 include ../config.mk
 
-TUPLE = $(PACKAGE)_$(VERSION)
-TGZFILE = $(TUPLE).orig.tar.gz
+REVISION = $(shell cd $(PACKAGE); dpkg-parsechangelog -S Version)
+VERSION = $(shell cd $(PACKAGE); dpkg-parsechangelog -S Version | sed -E 's/-.*//')
+PACKAGE_VERSION = $(PACKAGE)_$(VERSION)
+PACKAGE_REVISION = $(PACKAGE)_$(REVISION)
+
+ORIGTGZ = $(PACKAGE_VERSION).orig.tar.gz
+STAMPFILE = ../$(OUTDIR)/.$(PACKAGE_REVISION).stamp
 
 SBUILD_OPTS ?=
 GITTAG ?= v$(VERSION)
@@ -19,15 +24,19 @@ endif
 
 build: origtgz compile
 
-origtgz: $(TGZFILE)
+origtgz: $(ORIGTGZ)
 
-$(TGZFILE):
+$(ORIGTGZ):
 	git -C $(PACKAGE) archive --prefix=$(PACKAGE)/ -o ../$@ $(GITTAG)
 
-compile:
+compile: $(STAMPFILE)
+
+$(STAMPFILE):
 	sbuild -d $(DIST) -b --build-dir ../$(OUTDIR) $(SBUILD_OPTS) $(PACKAGE)
+	touch $(STAMPFILE)
 
 clean:
-	rm -f $(TGZFILE)
-	rm -f $(TUPLE)-*.dsc
-	rm -f $(TUPLE)-*.debian.tar.xz
+	rm -f $(ORIGTGZ)
+	rm -f $(PACKAGE_VERSION)-*.dsc
+	rm -f $(PACKAGE_VERSION)-*.debian.tar.xz
+	rm -f $(STAMPFILE)

@@ -1,9 +1,14 @@
 include config.mk
 
+SUBDIRS := skalibs execline s6 s6-rc s6-dns bearssl s6-networking \
+		s6-portable-utils s6-linux-utils s6-linux-init
+
 all: setup $(SUBDIRS)
 
-setup:
-	mkdir $(OUTDIR)
+setup: $(OUTDIR)
+
+$(OUTDIR):
+	mkdir $@
 
 skalibs: setup
 	$(MAKE) -C $@ build
@@ -36,8 +41,8 @@ s6-linux-init: setup skalibs execline s6
 	$(MAKE) -C $@ build
 
 clean:
-	rm -rf $(OUTDIR)
 	for i in $(SUBDIRS); do \
 		$(MAKE) -C $$i clean; \
 	done
+	rm -rf $(OUTDIR)
 
