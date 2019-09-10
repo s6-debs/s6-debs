@@ -26,7 +26,7 @@ $ git submodule update
 The Makefiles in this repository use the `sbuild(1)` tool to build packages
 within a clean chroot environment and `dpkg-parsechangelog(1)` for extracting
 versioning information of packages, which requires the installation of the
-`dpkg-dev`, `sbuild`, `schroot` and `debhelper` packages on the host build
+`dpkg-dev`, `sbuild`, `schroot` and `debootstrap` packages on the host build
 machine.
 
 Once these packages are installed, a build chroot must be created for `sbuild`.
@@ -40,7 +40,7 @@ Note that the `--include=...` argument is optional, and is specified here in
 order to include a number of common build dependencies in the base chroot so
 that they are not redownloaded every time a package is built. You may also
 provide the URL of a Debian mirror as a further argument, in which case,
-`deboostrap` will use that mirror instead of the default of
+`debootstrap` will use that mirror instead of the default of
 `http://deb.debian.org/debian`, which may be desirable in order to use a
 geographically closer Debian mirror than the default.
 
