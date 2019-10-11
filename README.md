@@ -21,10 +21,10 @@ $ git submodule update
 ```
 
 The Makefiles in this repository use the `sbuild(1)` tool to build packages
-within a clean chroot environment and `dpkg-parsechangelog(1)` for extracting
-versioning information of packages, which requires the installation of the
-`dpkg-dev`, `sbuild`, `schroot` and `debootstrap` packages on the host build
-machine.
+within a clean chroot environment, and `dpkg-parsechangelog(1)` for extracting
+versioning information of packages. This requires the `dpkg-dev`, `sbuild,`
+`schroot`, `debootstrap` and `debhelper` packages to be installed on the host
+build machine.
 
 Once these packages are installed, a build chroot must be created for `sbuild`.
 This can be achieved by running a command similar to:
