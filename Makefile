@@ -46,6 +46,9 @@ s6-linux-init: setup skalibs execline s6
 
 clean:
 	for i in $(SUBDIRS); do \
-		$(MAKE) -C $$i clean; \
+		rm -rf $$i/*.orig.tar.gz; \
+		rm -rf $$i/*.dsc; \
+		rm -rf $$i/*.debian.tar.xz; \
+		rm -rf $(OUTDIR)/.$$i*.stamp; \
 	done
 	rm -rf $(OUTDIR)
