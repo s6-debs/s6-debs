@@ -56,15 +56,15 @@ not supported by the build Makefiles in this repository.
 
 ## Building
 
-Whenever you invoke `make` in this repository, you must define the `DIST` make
-variable on the command line, and set it to the name of the distribution for
-which you want to build the packages. For example, the entire suite of packages
-can be built for "buster" (the release codename for Debian 10) by issuing `make
-DIST=buster` at the root of the repository. Alternatively, the name of each
-package may be specified as a make target, e.g. `make DIST=buster skalibs` or
-`make DIST=stretch s6`, in which case only that package (and its dependencies)
-will be built. The build artefacts can then be found in the generated
-`build-out` directory under the repository root.
+By default, the Makefiles will attempt to build packages for Debian Buster. If
+you wish to build for a different Debian release, then set the `DIST` variable
+on the `make` command line.
+
+Invoking `make` will by default build the entire suite of packages, however
+individual packages may be specified as a make target, e.g. `make skalibs`
+to build skalibs for Buster, or `make DIST=stretch s6` to build s6 for
+Stretch. The build artefacts can then be found in the generated `build-out`
+directory under the repository root.
 
 If you wish to compile in your host environment without the use of `sbuild`,
 then you should change to the directory of the package you wish to build (e.g.
