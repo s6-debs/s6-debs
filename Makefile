@@ -1,6 +1,6 @@
 include config.mk
 
-DIST ?= buster
+DIST ?= bullseye
 export DIST
 
 SUBDIRS := skalibs execline s6 s6-rc s6-dns bearssl s6-networking \
