@@ -56,15 +56,15 @@ not supported by the build Makefiles in this repository.
 
 ## Building
 
-By default, the Makefiles will attempt to build packages for Debian Buster. If
+By default, the Makefiles will attempt to build packages for Debian Bullseye. If
 you wish to build for a different Debian release, then set the `DIST` variable
 on the `make` command line.
 
 Invoking `make` will by default build the entire suite of packages, however
-individual packages may be specified as a make target, e.g. `make skalibs`
-to build skalibs for Buster, or `make DIST=stretch s6` to build s6 for
-Stretch. The build artefacts can then be found in the generated `build-out`
-directory under the repository root.
+individual packages may be specified as a make target, e.g. `make skalibs` to
+build skalibs for Bullseye, or `make DIST=buster s6` to build s6 for Buster. The
+build artefacts can then be found in the generated `build-out` directory under
+the repository root.
 
 If you wish to compile in your host environment without the use of `sbuild`,
 then you should change to the directory of the package you wish to build (e.g.
